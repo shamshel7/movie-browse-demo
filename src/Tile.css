@@ -1,0 +1,30 @@
+.Tile {
+    display: inline-block;
+    height: 300px;
+    width: 200px;
+    border-radius: 5px;
+    text-align: left;
+    cursor: pointer;
+    margin: 15px;
+    padding: 10px;
+    font-size: xx-large;
+    font-weight: 500;
+    color: #ffffff00;
+    vertical-align: bottom;
+}
+
+.Tile:hover {
+    color: #ffffffff;
+    box-shadow: inset 0 0 0 2000px #00000088;
+}
+
+.Title {
+    font-size: xx-large;
+    font-weight: 500;
+    vertical-align: top;
+}
+
+.Runtime {
+    font-size: large;
+    font-weight: 300;
+}
