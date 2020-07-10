@@ -1,0 +1,59 @@
+.Details {
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    text-align: left;
+    vertical-align: top;
+    margin: 10px;
+    padding: 30px;
+    color: #000000;
+}
+
+.Info {
+    flex: 1;
+    margin: 20px;
+}
+
+.DetailsTitle {
+    font-size: 80px;
+}
+
+.DetailsRuntimeOrEpisodes {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.Overview {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.Genres {
+    font-size: 30px;
+    color: #666666;
+}
+
+.ReleaseDate {
+    font-size: 20px;
+}
+
+.OriginalLanguage {
+    font-size: 20px;
+}
+
+.PlayButton {
+    margin: 20px 0px 20px 0px;
+    padding: 20px 40px 20px 40px;
+    display: inline-block;
+    text-align: center;
+    background-color: green;
+    color: white;
+}
+
+.Poster {
+    flex: 1;
+    justify-content: center;
+    margin: 20px;
+    height: 300px;
+    width: 200px;
+}

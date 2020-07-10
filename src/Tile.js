@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
 import './Tile.css';
 
 const apiKey = "6cd24402a0302e3560524e21ec35bb5d";
@@ -19,6 +20,23 @@ class Tile extends Component {
         this.getTileInfo();
     }
 
+    render() {
+        return(
+            <Link to={"/details/" + this.props.type + "/" + this.props.id}>
+                <div
+                    className="Tile"
+                    style={{
+                        backgroundImage: 'url("' + imagePathStart + this.state.posterPath + '")',
+                        backgroundSize: "cover"
+                    }}
+                >
+                    <p className="Title">{this.state.title}</p>
+                    <p className="Runtime">{this.state.runtime}</p>
+                </div>
+            </Link>
+        );
+    }
+
     /**
      * Fetches movie details based on the id prop passed to the component
      */
@@ -34,32 +52,12 @@ class Tile extends Component {
                 this.setState({
                     title: this.checkLength(titleOrName),
                     posterPath: data.poster_path,
-                    runtime: this.props.type === "movie" ? this.getDuration(data.runtime) : (data.number_of_episodes + " episodes")
+                    runtime: this.props.type === "movie" ? this.getRuntime(data.runtime) : (data.number_of_episodes + " episodes")
                 })
             })
             .catch((error) => {
                 console.log("An error occured fetching the data", error);
             });
-    }
-
-    render() {
-        return(
-            <div
-                className="Tile"
-                style={{
-                    backgroundImage: 'url("' + imagePathStart + this.state.posterPath + '")',
-                    backgroundSize: "cover"
-                }}
-                onClick={() => this.handleClick()}
-            >
-                <p className="Title">{this.state.title}</p>
-                <p className="Runtime">{this.state.runtime}</p>
-            </div>
-        );
-    }
-
-    handleClick() {
-        console.log("Clicked " + this.state.title);
     }
 
     /**
@@ -82,7 +80,7 @@ class Tile extends Component {
      * A function which returns a string representing the run time in hours and minutes
      * @param {number} time 
      */
-    getDuration(time) {
+    getRuntime(time) {
         var hours = Math.floor(time / 60);
         var mins = time % 60;
         var runtime = hours + "h " + mins + "mins";
