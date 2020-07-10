@@ -24,7 +24,7 @@ class Tile extends Component {
         return(
             <Link to={"/details/" + this.props.type + "/" + this.props.id}>
                 <div
-                    className="Tile"
+                    className={this.state.posterPath !== null ? "Tile" : "TileNoPoster"}
                     style={{
                         backgroundImage: 'url("' + imagePathStart + this.state.posterPath + '")',
                         backgroundSize: "cover"

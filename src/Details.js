@@ -33,7 +33,7 @@ class Details extends Component {
                         {this.state.title}
                     </div>
                     <div className="DetailsRuntimeOrEpisodes">
-                        {this.props.match.params.type == 'movie' ? this.state.runtime : this.state.episodes}
+                        {this.props.match.params.type === 'movie' ? this.state.runtime : this.state.episodes}
                     </div>
                     <div className="Overview">
                         {this.state.overview}
@@ -41,7 +41,7 @@ class Details extends Component {
                     <hr color="#bbbbbb"/>
                     <div className="Genres">
                         {this.state.genres.map((genre) => {
-                            if (genre.name == this.state.genres[this.state.genres.length - 1].name) {
+                            if (genre.name === this.state.genres[this.state.genres.length - 1].name) {
                                 return genre.name;
                             } else {
                                 return genre.name + ", ";
@@ -49,7 +49,7 @@ class Details extends Component {
                         })}
                     </div>
                     <div className="ReleaseDate">
-                        {this.props.match.params.type == 'movie' ? <strong>Release date: </strong> : <strong>Last episode: </strong>}{this.state.releaseDate != null ? this.state.releaseDate : "Unknown"}
+                        {this.props.match.params.type === 'movie' ? <strong>Release date: </strong> : <strong>Last episode: </strong>}{this.state.releaseDate !== null ? this.state.releaseDate : "Unknown"}
                     </div>
                     <div className="OriginalLanguage">
                         <strong>Original Language: </strong>{this.state.originalLanguage ? this.state.originalLanguage.toUpperCase() : "Unknown"}
@@ -61,25 +61,30 @@ class Details extends Component {
                     </Link>
                 </span>
                 <span className="Poster">
-                    <img src={imagePathStart + this.state.posterPath} />
+                    <img src={imagePathStart + this.state.posterPath} alt="Poster"/>
                 </span>
             </div>
         );
     }
 
+    /**
+     * Fetches data from URL and assigns it to state.
+     * @param {string} type 
+     * @param {number} id 
+     */
     getDetails(type, id) {
         const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&language=en-US`
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
                 this.setState({
-                    title: this.props.match.params.type == 'movie' ? data.title : data.name,
+                    title: this.props.match.params.type === 'movie' ? data.title : data.name,
                     overview: data.overview,
                     posterPath: data.poster_path,
                     genres: data.genres,
-                    releaseDate: this.props.match.params.type == 'movie' ? data.release_date : data.last_air_date,
-                    runtime: type == 'movie' ? this.getRuntime(data.runtime) : null,
-                    episodes: type == 'tv' ? (data.number_of_episodes + " episodes") : null,
+                    releaseDate: this.props.match.params.type === 'movie' ? data.release_date : data.last_air_date,
+                    runtime: type === 'movie' ? this.getRuntime(data.runtime) : null,
+                    episodes: type === 'tv' ? (data.number_of_episodes + " episodes") : null,
                     originalLanguage: data.original_language
                 })
             })
@@ -87,7 +92,7 @@ class Details extends Component {
     }
 
     /**
-     * A function which returns a string representing the run time in hours and minutes
+     * Returns a string representing the runtime in hours and minutes
      * @param {number} time 
      */
     getRuntime(time) {

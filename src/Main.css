@@ -3,23 +3,34 @@
   padding: 20px;
 }
 
+.TopBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .AppTitle {
     font-size: 50px;
     font-weight: 600;
     margin-left: 20px;
     margin-bottom: 20px;
     color: #cc0000;
+    cursor: pointer;
+}
+
+.Back {
+    justify-self: flex-end;
 }
 
 .Section {
     background-color: #EFEFEF;
     font-size: 30px;
     border-radius: 10px;
-    margin: 5px;
+    margin: 10px 5px 10px 5px;
     padding: 10px;
 }
 
 .SectionTitle {
     margin: 5px;
-    text-decoration: underline;
+    cursor: default;
 }

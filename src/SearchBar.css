@@ -1,0 +1,39 @@
+.SearchBar {
+    display: flex;
+    align-items: center;
+}
+
+.Back {
+    background-color: #eeeeee;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.SearchBarBox {
+    align-items: center;
+    margin: 10px;
+}
+
+.SearchBarBox input {
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #cccccc;
+    background-color: #cccccc;
+    width: 500px;
+    height: 50px;
+    color: #777777;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.SearchBarBox input:hover {
+    background-color: #eeeeee;
+    border-color: #eeeeee;
+}
+
+.SearchBarBox input:focus {
+    background-color: #eeeeee;
+    color: #000000;
+}

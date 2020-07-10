@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Router, browserHistory} from 'react-router';
-import { Link, Route, Switch } from "react-router-dom";
+import {  Route } from "react-router-dom";
 import Main from './Main';
 import Details from './Details';
 import Watch from './Watch';
