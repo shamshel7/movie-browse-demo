@@ -1,4 +1,4 @@
-This demo app was built in approximately 18 hours.
+This demo app was built in approximately *18 hours*.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
